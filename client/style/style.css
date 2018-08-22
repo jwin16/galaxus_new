@@ -1,0 +1,518 @@
+canvas, img { 
+	display:block; 
+	margin:0em auto;  
+}
+
+canvas #ctx{ 
+	background-color:#000; 
+	background-size:cover; 
+	background-image:url('/client/img/assets/sky.png'); 
+}
+
+html{
+	margin:0px;
+	padding:0px;
+	background-color:#000;
+}
+
+body{
+	margin:0px;
+	padding:0px;
+	font-family:'Open Sans';
+}
+
+#select_class{
+	position:absolute; 
+	width:100%; 
+	top:200px; 
+	color:#fff; 
+	font-size:120px;
+	display:none;
+ 	width:750px; 
+ 	margin-left:auto; 
+ 	margin-right:auto; 
+ 	margin-top:100px;
+}
+
+
+#ctx{
+	width:100%;
+	height:100%;
+}
+
+
+
+#ctx-fx{ 
+	display:none;
+}
+
+#gameEndScreen{
+	position:absolute; 
+	text-align:center; 
+	width:100%; 
+	height:100%;  
+	background-color:rgba(0,0,0,.75);
+	display:none;
+	z-index:100000000000;
+}
+
+
+#dzone{
+	display:none; 
+	position:absolute; 
+	width:695px; 
+	height:250px; 
+	background-image:url('/client/img/assets/cbubble4.png');
+}
+
+#dportrait{
+	position:absolute; 
+	width:185px;
+	height:200px;
+	z-index:100000000;
+}
+
+#select-class{
+	display:none; 
+	width:900px; 
+	margin-left:auto; 
+	margin-right:auto; 
+	margin-top:10px;
+}
+
+#inventory_hold{
+	width:100%;
+	position:absolute;
+	display:none;
+	z-index:1000000000000000;
+}
+
+#questText{
+	width:509px; 
+	position:relative; 
+	height:120px; 
+	margin-top:110px; 
+	margin-left:7px;
+	padding-left:15px;
+}
+
+#questCloseButton{
+	border-radius:5px; 
+	background-color:#eee; 
+	padding:15px 30px; 
+	margin-top:30px;
+	font-size:18px;
+	color:#444;
+	font-weight:bold;
+	border:1px #999 solid;
+}
+
+#inventory{
+	margin-top:100px; 
+	margin-left:auto; 
+	margin-right:auto; 
+	width:522px; 
+	height:478px; 
+	background-image:url('/client/img/assets/inventory.png');
+}
+
+.closeTab{
+	background-color:#fffec4; 
+	font-weight:bold; 
+	border:0px; 
+	border-radius:3px; 
+	padding:5px 8px; 
+	color:#000;
+}
+
+#quest_hold{
+	width:100%;
+	position:absolute;
+	display:none;
+	z-index:1000000000000000;
+}
+
+#quest{
+	margin-top:100px; 
+	margin-left:auto; 
+	margin-right:auto; 
+	width:522px; 
+	height:478px; 
+	background-image:url('/client/img/assets/questcom2.png');
+}
+
+
+#journal_hold{
+	width:100%;
+	position:absolute;
+	display:none;
+	z-index:1000000000000000;
+}
+
+#journal{
+	margin-top:30px; margin-left:auto; margin-right:auto; width:522px; height:620px; background-image:url('/client/img/assets/journal.png');
+}
+
+
+
+
+.qHeader{
+	font-size:20px;
+	font-family:arial;
+	font-weight:bold;
+	color:#444;
+}
+
+.qLower{
+	color:#222;
+}
+
+.quest_bg{
+	position:relative; 
+	display:none; 
+	margin-left:8px; 
+	margin-top:10px; 
+	width:506px; 
+	height:60px; 
+	background-color:rgba(255,255,255,.4);
+}
+
+.qLeft{
+	width:70px;
+}
+
+.qRight{
+	width:400px;
+}
+
+#moneyHold{
+	display:none;
+	position:absolute; right:20px; top:20px; 
+	cursor: default;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+#xpHold{
+	display:none;
+	position:absolute; right:23px; top:70px; 
+	cursor: default;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+#xpProgress{
+	width:0%;
+	height:11px;
+	background-color:#ff0000;
+
+	background: #000046;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	margin-top:-18px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.xpClip{
+	background-image: url('/client/img/assets/progress.png'); height:33px; width:194px; 
+}
+
+
+#journalIconHold{
+	display:none;
+	position:absolute; right:23px; top:115px; 
+	cursor: default;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.journalClip{
+	background-image: url('/client/img/assets/journalup.gif'); height:38px; width:144px; 
+}
+
+.moneyClip{
+	background-image: url('/client/img/assets/moneytop.png'); height:45px; width:200px; 
+}
+
+.moneyText{
+	padding-top:5px; font-size:18px; font-weight:normal; letter-spacing:8px; 
+	color:#fff; padding-left:46px; font-family: 'VT323', monospace; font-size:32px;
+}
+
+#canvi{
+	/*
+	width:1200px;
+	height:1000px;
+	position:relative;
+	*/
+}
+
+
+#chat-text{
+	font-size:14px; 
+	color:#fff; 
+	position:absolute; 
+	bottom:93px; 
+	left:10px; 
+	width:475px;
+	height:283px;
+
+	cursor: default;
+   -webkit-user-select: none;
+   -webkit-touch-callout: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   -o-user-select: none;
+}
+
+
+#over-canvi{
+	width:600px;
+}
+
+#intro{
+	position:absolute;
+	top:0px;
+	margin-left:auto;
+	margin-right:auto;
+	width:500px;
+}
+
+.main_bg{
+
+	
+}
+
+html, body {
+  width:  100%;
+  height: 100%;
+  margin: 0px;
+}
+
+body{
+	background-color:#000;
+	background-image:url('/client/img/assets/sky.png');
+	background-size:cover; 
+	background-repeat:no-repeat
+}
+
+#sign_div{
+	width:600px; 
+	height:180px;  
+	margin-left:auto; 
+	margin-right:auto;
+	margin-top:30px;
+	background-color:rgba(0,0,0,.5);
+	color:#fff;
+	font-size:40px;
+	text-align:center;
+	padding:10px;
+	border-radius:10px;
+}
+
+#glogo{
+	width:800px; 
+	margin-left:auto; 
+	margin-right:auto; 
+	position:relative;
+	margin-top:120px;
+	margin-bottom:80px;
+}
+
+#sign_div input[type='text']{
+	font-size:30px;
+	padding:2px 5px;
+}
+
+#sign_div button{
+	font-size:22px;
+	padding:10px 50px;
+	background-color:#1074e4;
+	border:2px #3180d9 solid;
+	color:#fff;
+	border-radius:6px;
+	margin-top:10px;
+}
+
+
+#respawn{
+	font-size:22px;
+	padding:10px 150px;
+	background-color:#1074e4;
+	border:2px #3180d9 solid;
+	color:#fff;
+	border-radius:6px;
+	margin-top:10px;
+}
+
+#titlescreen{
+	font-size:22px;
+	padding:10px 140px;
+	background-color:#ccc;
+	border:2px #999 solid;
+	color:#555;
+	border-radius:6px;
+	margin-top:10px;
+}
+
+
+#welcometext{
+	color:#fff; 
+	text-align:center; 
+	font-size:60px; 
+	font-weight:normal;
+	position: absolute; 
+	top:100px; 
+	width:100%;
+	margin-top:200px;
+	display:none;
+	letter-spacing: 12px;
+	text-shadow: 1px 1px 3px #000;
+	-webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+
+#eventtext{
+	color:#fff;
+	z-index:1000000000; 
+	text-align:center; 
+	font-size:28px; 
+	font-weight:normal;
+	position: absolute; 
+	top:100px;
+	padding-left:400px; 
+	width:50%;
+	margin-top:200px;
+	display:none;
+	letter-spacing: 4px;
+	text-shadow: 1px 1px 3px #000;
+
+}
+
+
+/* 
+.typewriter{
+  overflow: hidden; /* Ensures the content is not revealed until the animation 
+  border-right: 0em solid orange; /* The typwriter cursor 
+  white-space: nowrap; /* Keeps the content on a single line 
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens 
+  letter-spacing: .15em; /* Adjust as needed 
+  animation: 
+    typing 1.5s steps( 80, end),
+    blink-caret .75s step-end infinite;
+    width:250px;
+}
+*/ 
+
+/* The typing effect */
+/* 
+@keyframes typing {
+  from { width: 0 }
+  to { width: 250px }
+}
+
+/* 
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
+}
+*/
+
+
+
+.ttext{
+	color:#000;
+	font-family: 'VT323', monospace; 
+
+	text-align:left; 
+	font-size:32px; 
+	font-weight:normal;
+	position: absolute; 
+	top:0px; 
+	left:13px;
+	margin-top:0px;
+	line-height:28px;
+	width:465px;
+	display:none;
+	margin-left:28px;
+}
+
+.newicon{
+	display:none;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.completeicon{
+	display:none;
+	position:absolute;
+	top:0px;
+	left:9px;
+
+}
+
+.typewriter{ 
+
+}
+ 
+
+.ntext{
+	color:#444;
+		font-family: 'Open Sans'; 
+	text-align:left; 
+	font-size:22px; 
+	font-weight:bold;
+	position: absolute; 
+	top:0px; 
+	left:0px;
+	width:100%;
+	margin-top:0px;
+	letter-spacing:1px;
+	line-height:30px;
+	width:500px;
+	display:none;
+}
+
+.class_sel{
+	width:195px; 
+	height:300px;
+	float:left;
+	margin-right:20px;
+	
+}
+
+.char_sel{
+	width:140px; 
+	height:221px; 
+	float:left;
+	margin-left:30px;
+	margin-bottom:30px;
+}
+
+.front_effect{
+	display:none; 
+	position:fixed; 
+	width:100%; 
+	height:100%; 
+	background-image:url('/client/img/effects/heartup4.gif');
+	z-index:100;
+}

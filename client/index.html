@@ -1,0 +1,537 @@
+<!DOCTYPE HTML>
+
+<!--
+
+  /$$$$$$            /$$                                        
+ /$$__  $$          | $$                                        
+| $$  \__/  /$$$$$$ | $$  /$$$$$$  /$$   /$$ /$$   /$$  /$$$$$$$
+| $$ /$$$$ |____  $$| $$ |____  $$|  $$ /$$/| $$  | $$ /$$_____/
+| $$|_  $$  /$$$$$$$| $$  /$$$$$$$ \  $$$$/ | $$  | $$|  $$$$$$ 
+| $$  \ $$ /$$__  $$| $$ /$$__  $$  >$$  $$ | $$  | $$ \____  $$
+|  $$$$$$/|  $$$$$$$| $$|  $$$$$$$ /$$/\  $$|  $$$$$$/ /$$$$$$$/
+ \______/  \_______/|__/ \_______/|__/  \__/ \______/ |_______/ 
+                                                                
+                                                                                                                                                     
+--> 
+
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="/client/style/style.css?v=7">
+		<link rel="icon" href="/client/img/favicon/favicon.ico" type="image/x-icon" />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+
+		<script src="/client/js/jquery.js"></script>
+		<script src="/client/js/typeWriter.js"></script>
+
+		<title>Galaxus: Go for Glory</title>
+	</head>
+
+	<body>
+
+
+	<div id="allHold" style="position:relative;">
+
+	<div id="gameEndScreen"> 
+		<div style="margin-top:250px; margin-bottom:80px;">
+		<img src="/client/img/assets/died.png" />
+		</div>
+		<div>
+		<button id="respawn" onclick="respawn();">Respawn</button>
+		</div>
+		<div style="margin-top:20px;">
+		<button id="titlescreen" onclick="window.location='/'">Title Screen</button>
+		</div>
+
+	</div>
+
+	<div id="front_effect" style="display:none; width:100%; height:100%; position:absolute; font-size:40px; color:#fff; z-index:10000000;">
+	</div>
+
+	<div id="front_effect_two" style="display:none; background-color:#fff; width:100%; height:100%; position:absolute; font-size:40px; color:#fff; z-index:10000000;">
+	</div>
+
+	<div>
+
+		<div id="canvi" style="position:relative; margin-left:auto; margin-right:auto; ">
+
+			<div style="position:absolute; width:100%;">
+
+				<div id="glogo">
+					<img src="/client/img/assets/galaxus.png" />
+					<!-- 
+					<div style="position:absolute; top:20px; left:80px; ">
+						<img src="/client/img/effects/boom2.gif" style="opacity:.2;" />
+					</div>
+					--> 
+				</div>
+
+				<div id="sign_div">
+
+					<div>
+						<div>
+							Give your character a name 
+						</div>
+						<div>
+							<input id="signDiv-username" name="username" value="Aluna" type="text"></input>
+						</div>
+					</div>
+					<div>
+						<button style="display:none;" id="signDiv-signUp">Sign Up</button> 
+						<button id="signDiv-signIn">Start</button>
+					</div>
+
+				</div>
+
+				<div id="select-class">
+
+					<div style="margin:30px 0px;">
+						<img src="/client/img/assets/selectclass.png" />
+					</div>
+
+					<a href="javascript:void(0);" onclick="playerSelectClass('mage');">
+						<div class="char_sel" style="opacity:.3; background-image:url('/client/img/assets/sel_class_mage.png'); ">
+						</div>
+					</a>
+
+					<a href="javascript:void(0);" onclick="playerSelectClass('healer');">
+						<div class="char_sel" style="opacity:.3; background-image:url('/client/img/assets/sel_class_healer.png'); ">	
+						</div>
+					</a>
+
+					<a href="javascript:void(0);" onclick="playerSelectClass('enchanter');">
+						<div class="char_sel" style="opacity:.3; background-image:url('/client/img/assets/sel_class_enchanter.png'); ">
+						</div>
+					</a>
+
+					<a href="javascript:void(0);" onclick="playerSelectClass('warrior');">
+						<div class="char_sel" style="background-image:url('/client/img/assets/sel_class_warrior.png'); ">
+						</div>
+					</a>
+
+					<a href="javascript:void(0);" onclick="playerSelectClass('monk');">
+						<div class="char_sel" style="background-image:url('/client/img/assets/sel_class_monk.png'); ">
+						</div>
+					</a>
+					
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div id="gameHold" style="margin-left:auto; margin-right:auto; max-width:1200px;">
+
+		<div id="inventory_hold">
+			<div id="inventory" >
+				<div style="margin-top:50px; position:relative;">
+					<div style="position:absolute; top:12px; right:15px;">
+						<button class="closeTab" onclick="closeInventory();">X</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="quest_hold">
+			<div id="quest" style="position:relative;" >
+				&nbsp; 
+				<div id="questText" style="height:194px;">
+					<div id="questHeader" style="font-size:28px; margin-left:35px; margin-top:5px; margin-right:40px; font-weight:bold;">
+					</div>
+					<div id="questDesc" style="font-size:18px; margin-left:35px; margin-right:110px; margin-top:5px;">
+					</div>
+
+				</div>
+					<div id="questReward" style="font-size:18px; margin-left:128px; font-size:30px; font-weight:bold;">
+					</div>
+				<div style="margin-top:2px; margin-left:220px;">
+					<button onclick="finishQuest();" id="questCloseButton">Close </button>
+				</div>	
+			</div>
+		</div>
+
+		<div id="journal_hold">
+			<div id="journal" >
+				<div style="margin-top:50px; position:relative; ">
+					<div style="position:absolute; top:12px; right:15px;">
+						<button class="closeTab" onclick="closeJournal();">X</button>
+					</div>
+					&nbsp;
+					<div id="queenQuest" class="quest_bg" style="display:block; margin-top:30px;">
+						<div id="newIconQueen" class="newicon" style="display:block;">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconQueen" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+								<img src="/client/img/assets/q_queen.png" style="width:56px; height:56px;" />
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+										Talk to 12 Villagers
+									</div>
+									<div class="qLower">
+										Introduce yourself to people around Mythic City.
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div id="iceQuest" class="quest_bg">
+						<div id="newIconIce" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconIce" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_iceking.png" style="width:56px; height:56px;" />
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+										Slay the Ice King
+									</div>
+									<div class="qLower">
+										Travel to lower frostpeak to find the Ice King. 
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div id="harveyQuest" class="quest_bg">
+						<div id="newIconHarvey" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconHarvey" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_harvey.png" style="width:56px; height:56px;" />
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+										Gain access to Tiv's Lair
+									</div>
+									<div class="qLower">
+										Defeat the four gatekeepers in sunken depths. 
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+
+					<div id="voicelessQuest" class="quest_bg">
+						<div id="newIconVoiceless" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconVoiceless" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_voiceless.png" style="width:56px; height:56px;" />
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+										Defeat Ovrenen, the Voiceless
+									</div>
+									<div class="qLower">
+										Take down the great behemoth Ovrenen. 
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div id="willowQuest" class="quest_bg">
+
+						<div id="newIconWillow" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconWillow" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_willow.png" style="width:56px; height:56px;" />
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+									Capture a Willow Wisp
+									</div>
+									<div class="qLower">
+										Willow wisp's are highly rare spawns in Mythic Forest.
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+
+					<div id="emperorQuest" class="quest_bg" >
+						<div id="newIconEmperor" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconEmperor" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_emperor.png" style="width:56px; height:56px;" />
+
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+									Defeat the Corrupt Emperor
+										</div>
+									<div class="qLower">
+										Travel to the Sun Palace and retake the throne. 
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+
+					<div id="tibetQuest" class="quest_bg" >
+						<div id="newIconTibet" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconTibet" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_tibet.png" style="width:56px; height:56px;" />
+
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+									Walk around the shrine 7 times. 
+										</div>
+									<div class="qLower">
+										To connect with the shrine walk around it 7 times.  
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+
+					<div id="orcQuest" class="quest_bg" >
+						<div id="newIconOrc" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconOrc" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_orc.png" style="width:56px; height:56px;" />
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+										Slay the Orc King
+									</div>
+									<div class="qLower">
+									Travel to the Orc Encampment to find the Orc King.
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+	
+
+
+					<div id="fishQuest" class="quest_bg" >
+						<div id="newIconFish" class="newicon">
+							<img src="/client/img/assets/newicon.png"/>
+						</div>
+						<div id="completeIconFish" class="completeicon" >
+							<img src="/client/img/assets/completemark.png" style="opacity:.5;" />
+						</div>
+						<table>
+							<tr>
+								<td class="qLeft">
+									<img src="/client/img/assets/q_fish.png" style="width:56px; height:56px;" />
+
+								</td>
+								<td class="qRight">
+									<div class="qHeader">
+									Lets go Fishing
+									</div>
+									<div class="qLower">
+										Find a fishing rod to begin learning how to fish.
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+
+
+				</div>
+			</div>
+			</div>
+
+			<div id="moneyHold">
+				<div class="moneyClip">
+					<div id="moneyText" class="moneyText">0000000</div>
+				</div>
+			</div>
+
+			<div id="xpHold" >
+				<div class="xpClip">
+				</div>
+				<div id="xpProgress">
+				</div>
+			</div>
+
+			<div id="journalIconHold">
+				<div class="journalClip">
+				</div>
+			</div>
+
+			<div id="welcometext"> 
+			</div>
+
+			<div id="eventtext"> 
+			</div>
+
+			<div id="dialogs">	
+				<div id="dportrait">
+				</div>
+				<div id="dzone">
+				</div>
+				<div id="dialog_name" class="ntext">
+				</div>
+				<div id="talktext_tibet" class="ttext">
+				</div>
+				<div id="talktext_fairy" class="ttext">
+				</div>
+				<div id="talktext_angelone" class="ttext">
+				</div>
+				<div id="talktext_siren" class="ttext">
+				</div>
+				<div id="talktext_enchantermaster" class="ttext">
+				</div>
+				<div id="talktext_leblanc" class="ttext">
+				</div>
+				<div id="talktext_queen" class="ttext">
+				</div>
+				<div id="talktext_cat" class="ttext">
+				</div>
+				<div id="talktext_dancer" class="ttext">
+				</div>
+				<div id="talktext_rydia" class="ttext">
+				</div>
+				<div id="talktext_green" class="ttext">
+				</div>
+				<div id="talktext_prince" class="ttext">
+				</div>
+				<div id="talktext_warriormaster" class="ttext">
+				</div>
+				<div id="talktext_toki" class="ttext">
+				</div>
+				<div id="talktext_magemaster" class="ttext">
+				</div>
+				<div id="talktext_angelthree" class="ttext">
+				</div>
+				<div id="talktext_healermaster" class="ttext">
+				</div>
+				<div id="talktext_guri" class="ttext">
+				</div>
+				<div id="talktext_dog" class="ttext">
+				</div>
+				<div id="talktext_harvey" class="ttext">
+				</div>
+				<div id="talktext_mothernature" class="ttext">
+				</div>
+			</div>
+
+			<canvas id="ctx-intro" width="1200" height="800"></canvas>
+
+
+			<canvas id="ctx" width="1200" height="800" style="max-width:1200px;" ></canvas>
+	
+			<canvas id="ctx-fx" width="1200" height="1000"></canvas>
+
+			<div id="chat-text" style="max-height:154px; overflow:hidden;">
+			</div>
+
+			<canvas id="ctx-ui"  width="1200" height="92"></canvas>
+
+			</div>
+
+			</div>
+
+			</div>
+
+		</div>
+
+
+	</body>
+</html>
+
+
+<script src="/client/js/socket.js"></script>
+
+<script src="/client/js/config.js"></script>
+
+<script src="/client/js/Inventory.js"></script>
+
+<script src="/client/js/Map.js"></script>
+
+<script src="/client/js/Message.js"></script>
+
+<script src="/client/js/account.js"></script>
+
+<script src="/client/js/main.js"></script>
+
+
+<script>
+//ctxIntro.canvas.width  = window.innerWidth;
+//ctxIntro.canvas.height = window.innerHeight;
+if( allowAudio ){
+	legendSound.play();
+}
+</script>
+
